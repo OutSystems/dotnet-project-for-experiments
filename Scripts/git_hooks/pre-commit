@@ -7,4 +7,6 @@ FILES=$(git diff --cached --name-only --diff-filter=ACM "*.cs" | sed 's| |\\ |g'
 echo "$FILES" | cat | xargs | sed -e 's/ /,/g' | xargs dotnet-format --include
 # Add back the modified files to staging
 echo "$FILES" | xargs git add
+
+echo "Rodando Testes" | xargs dotnet test
 exit 0
