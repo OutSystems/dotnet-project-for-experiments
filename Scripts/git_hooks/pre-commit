@@ -8,5 +8,10 @@ echo "$FILES" | cat | xargs | sed -e 's/ /,/g' | xargs dotnet-format --include
 # Add back the modified files to staging
 echo "$FILES" | xargs git add
 
-echo "Rodando Testes" | xargs dotnet test ../PrimeService.Tests/PrimeService.Tests.csproj
+exec dotnet test "./PrimeService.Tests/PrimeService.Tests.csproj"
+
+if [ $? -ne 0 ]; then
+echo "Tests must pass before commit!"
+exit 1
+fi
 exit 0
