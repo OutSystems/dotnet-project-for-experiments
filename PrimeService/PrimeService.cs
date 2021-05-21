@@ -10,8 +10,6 @@ namespace Prime.Services
             {
 
 
-
-
                 return false;
             }
             throw new NotImplementedException("Not fully implemented.");
